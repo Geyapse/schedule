@@ -11,9 +11,9 @@
 # 유저 명세서
 | 기능    | Method | URL                   | 요청값          | 상태코드    |
 | ----- | ------ | --------------------- | -------------- | ------------ |
-| 회원가입 | POST   | `/users/signup` | {username, email, password  | 200: 정상가입 |
-| 로그인 | POST    | `/users/login`   | {email, password} | 200: 정상로그인 |
-| 유저 조회 | GET    | `/users/{id}` |   X          | 200: 정상조회 |
+| 회원가입 | POST   | `/user/signup` | {username, email, password  | 200: 정상가입 |
+| 로그인 | POST    | `/user/login`   | {email, password} | 200: 정상로그인 |
+| 유저 조회 | GET    | `/user/{id}` |   X          | 200: 정상조회 |
 
 
 
