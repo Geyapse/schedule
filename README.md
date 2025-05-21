@@ -34,5 +34,5 @@
 * email
 * password
 * createdAt
-* modifiedAt
+
   
