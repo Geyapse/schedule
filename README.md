@@ -19,20 +19,20 @@
 
 # Schedule ERD
 
- [User]
-* id (PK)
-* username
-* email
-* password
-* createdAt
-* modifiedAt
-
 
 [Schedule]
 * id (PK)
 * user_id (FK)
 * title
 * content
+* createdAt
+* modifiedAt
+
+[User]
+* id (PK)
+* username
+* email
+* password
 * createdAt
 * modifiedAt
   
