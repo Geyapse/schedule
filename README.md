@@ -14,3 +14,25 @@
 | 회원가입 | POST   | `/users/signup` | {username, email, password  | 200: 정상가입 |
 | 로그인 | POST    | `/users/login`   | {email, password} | 200: 정상로그인 |
 | 유저 조회 | GET    | `/users/{id}` |   X          | 200: 정상조회 |
+
+
+
+# Schedule ERD
+
+ [User]
+* id (PK)
+* username
+* email
+* password
+* createdAt
+* modifiedAt
+
+
+[Schedule]
+* id (PK)
+* user_id (FK)
+* title
+* content
+* createdAt
+* modifiedAt
+  
