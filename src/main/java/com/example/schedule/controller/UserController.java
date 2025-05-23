@@ -46,7 +46,7 @@ public class UserController {
     }
 
     // 유저 삭제
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable Long id){
         if(userRepository.existsById(id)) {
             userRepository.deleteById(id);

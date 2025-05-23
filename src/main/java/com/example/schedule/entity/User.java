@@ -8,21 +8,21 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
+@Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long username;
+    private String username;
     private String email;
     private String password;
     private LocalDateTime createdAt;
-    private LocalDateTime ModifiedAt;
+    private LocalDateTime modifiedAt;
 
 }

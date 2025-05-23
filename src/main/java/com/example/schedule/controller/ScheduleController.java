@@ -31,10 +31,10 @@ public class ScheduleController {
     }
 
     // 일정 삭제
-    @DeleteMapping
-    public ResponseEntity<Schedule> deleteSchedule(@RequestBody Schedule schedule) {
-        if(scheduleRepository.existsById(schedule.getId())) {
-            scheduleRepository.deleteById(schedule.getId());
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Schedule> deleteSchedule(@PathVariable Long id) {
+        if(scheduleRepository.existsById(id)) {
+            scheduleRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
@@ -42,7 +42,7 @@ public class ScheduleController {
     }
 
     // 일정 수정
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Schedule> updateSchedule(@PathVariable Long id, @RequestBody Schedule updateData) {
         return scheduleRepository.findById(id)
                 .map(schedule -> {

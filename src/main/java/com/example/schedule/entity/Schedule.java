@@ -5,13 +5,13 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
+@Entity
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
