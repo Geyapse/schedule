@@ -1,3 +1,10 @@
+
+# 📅 Schedule Management API
+
+## 📌 프로젝트 소개
+
+이 프로젝트는 Spring Boot를 사용하여 사용자 일정 관리 기능을 제공하는 웹 애플리케이션입니다.
+
 # Schedule API 명세서
 
 # 일정 명세서
