@@ -39,13 +39,12 @@
 * createdAt
 * modifiedAt
 
-
-| User               | Schedule             |
-|--------------------|---------------------|
-| id (PK)            | id (PK)             |
-| username           | title               |
-| email              | content             |
-| password           | createdAt           |
-| createdAt          | modifiedAt          |
-| modifiedAt         | user_id (FK)        |
+| User Table           | Type            | Schedule Table     | Type            |
+|----------------------|-----------------|--------------------|-----------------|
+| id (PK)              | BIGINT          | id (PK)            | BIGINT          |
+| username             | VARCHAR(50)     | title              | VARCHAR(100)    |
+| email                | VARCHAR(100)    | content            | TEXT            |
+| password             | VARCHAR(100)    | createdAt          | DATETIME        |
+| createdAt            | DATETIME        | modifiedAt         | DATETIME        |
+| modifiedAt           | DATETIME        | user_id (FK)       | BIGINT          |
   
