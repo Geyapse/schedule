@@ -1,8 +1,11 @@
 package com.example.schedule.controller;
 
 import com.example.schedule.entity.Schedule;
+import com.example.schedule.entity.User;
 import com.example.schedule.repository.ScheduleRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +27,15 @@ public class ScheduleController {
 
     // 일정 생성
     @PostMapping
-    public ResponseEntity<Schedule> createSchedule(@RequestBody Schedule schedule) {
+    public ResponseEntity<Schedule> createSchedule(@RequestBody Schedule schedule, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        schedule.setUser(user);
         schedule.setCreatedAt(LocalDateTime.now());
         schedule.setModifiedAt(LocalDateTime.now());
+        Schedule saved = scheduleRepository.save(schedule);
         return ResponseEntity.ok(scheduleRepository.save(schedule));
     }
 

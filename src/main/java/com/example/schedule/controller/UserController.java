@@ -5,6 +5,7 @@ import com.example.schedule.entity.User;
 import com.example.schedule.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,21 +39,21 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<String> login(
             @RequestBody Map<String, String> loginRequest,
-            HttpServletRequest request,
-            HttpServletRequest response) {
+            HttpServletRequest request) {
         String email = loginRequest.get("email");
         String password = loginRequest.get("password");
 
         User user = userRepository.findByEmail(email);
-
-        if (user == null || !user.getPassword().equals(password)) {
-            return ResponseEntity.status(401).body("이메일 또는 비밀번호가 틀렸습니다.");
+        if (user == null
+                || !user.getPassword().equals(password)) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body("이메일 또는 비밀번호가 틀렸습니다.");
         }
 
-        // 정보 저장
-        request.getSession().setAttribute("userId", user.getId());
+        // 세션에 사용자 정보 저장
+        request.getSession().setAttribute("user", user);
         return ResponseEntity.ok("로그인 성공");
-
     }
 
     // 로그아웃
@@ -78,13 +79,14 @@ public class UserController {
 
     // 유저 삭제
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable Long id){
-        if(userRepository.existsById(id)) {
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+        if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("삭제완료");
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("존재하지 않는 유저입니다.");
         }
+    }
     }
 
 
@@ -92,4 +94,4 @@ public class UserController {
 
 
 
-}
+
