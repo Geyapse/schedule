@@ -36,4 +36,13 @@
 * createdAt
 * modifiedAt
 
+
+| User               | Schedule             |
+|--------------------|---------------------|
+| id (PK)            | id (PK)             |
+| username           | title               |
+| email              | content             |
+| password           | createdAt           |
+| createdAt          | modifiedAt          |
+| modifiedAt         | user_id (FK)        |
   
