@@ -27,8 +27,8 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-    // 유저 생성
-    @PostMapping
+    // 회원 가입
+    @PostMapping("/signup")
     public ResponseEntity<User> createUser(@RequestBody User user){
         user.setCreatedAt(LocalDateTime.now());
         user.setModifiedAt(LocalDateTime.now());
