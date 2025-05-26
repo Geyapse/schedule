@@ -28,7 +28,7 @@ public class UserController {
     }
 
     // 회원 가입
-    @PostMapping("/signup")
+    @PostMapping()
     public ResponseEntity<User> createUser(@RequestBody User user){
         user.setCreatedAt(LocalDateTime.now());
         user.setModifiedAt(LocalDateTime.now());

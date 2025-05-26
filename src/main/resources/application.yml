@@ -5,8 +5,7 @@ spring:
     password: admin
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update #처음시작할때는 create로 바꿔야함
     show-sql: true
-
 server:
   port: 8080
